@@ -1,8 +1,8 @@
-import React from "react";
-import CribleJF100 from "../../component/CribleJF100/CribleJF100";
-import ETATSGENERAL from "../../component/ETATSGENERAL/ETATSGENERAL";
-import Transfor from "../../component/Transfor/Transfor";
-import "./PartieOfThouriya.scss";
+import React from 'react'
+import CribleJF100 from '../../component/CribleJF100/CribleJF100'
+import ETATSGENERAL from '../../component/ETATSGENERAL/ETATSGENERAL'
+import Transfor from '../../component/Transfor/Transfor'
+import './PartieOfThouriya.scss'
 const PartieOfThouriya = () => {
   return (
     <>
@@ -14,7 +14,7 @@ const PartieOfThouriya = () => {
   */}
       <Transfor />
     </>
-  );
-};
+  )
+}
 
-export default PartieOfThouriya;
+export default PartieOfThouriya

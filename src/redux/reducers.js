@@ -1,6 +1,6 @@
 // reducers.js
 
-import { UPDATE_FORM_DATA } from './actions';
+import { UPDATE_FORM_DATA } from './actions'
 
 // Initial state for the form data
 const initialStateMap = {
@@ -8,7 +8,7 @@ const initialStateMap = {
   city: '',
   address: '',
   postalCode: ''
-};
+}
 
 // Reducer function to handle form data updates
 const formReducer = (state = initialStateMap, action) => {
@@ -17,10 +17,10 @@ const formReducer = (state = initialStateMap, action) => {
       return {
         ...state,
         ...action.payload
-      };
+      }
     default:
-      return state;
+      return state
   }
-};
+}
 
-export default formReducer;
+export default formReducer

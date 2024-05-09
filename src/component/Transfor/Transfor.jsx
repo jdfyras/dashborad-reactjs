@@ -1,17 +1,20 @@
-import React from "react";
-import NavBarTransfor from "../NavBarTransfor/NavBarTransfor";
-import NavbarUser from "../NavbarUser/NavbarUser";
-import MainCompTransfor from "../MainCompTransfor/MainCompTransfor";
+import PropTypes from 'prop-types' // Import PropTypes for props validation
+import NavBarTransfor from '../NavBarTransfor/NavBarTransfor'
+import NavbarUser from '../NavbarUser/NavbarUser'
+import MainCompTransfor from '../MainCompTransfor/MainCompTransfor'
 
-const Transfor = ({data}) => {
-
+const Transfor = ({ data }) => {
   return (
     <div>
       <NavBarTransfor />
       <NavbarUser />
-      <MainCompTransfor data={data}/>
+      <MainCompTransfor data={data} />
     </div>
-  );
-};
+  )
+}
 
-export default Transfor;
+Transfor.propTypes = {
+  data: PropTypes.object // Add props validation for 'data'
+}
+
+export default Transfor

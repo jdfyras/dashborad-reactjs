@@ -1,20 +1,13 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import './map.scss';
+import PropTypes from 'prop-types' // Import PropTypes for props validation
+import { connect } from 'react-redux'
+import './map.scss'
 
-const Map = ({ formData }) => {
-  // Access the localization data from props
-  const { state, city, address } = formData;
-  console.log("comes from reducer ", state, city)
-
-  // Now you have the necessary data to render the map based on the address, city, postal code, etc.
-  // You can use this data to fetch the map from a mapping service like Google Maps, Mapbox, etc.
+// Define the component as a named function to comply with Fast Refresh and add props validation
+function Map({ formData }) {
+  const { state, city, address } = formData
 
   return (
     <div className='map'>
-      {/* Render the map here using the localization data */}
-      {/* Example: You can use an iframe to embed a map from Google Maps */}
-      {/* Make sure to sanitize and validate the input before using it in the URL */}
       <iframe
         title='map'
         width='100%'
@@ -23,15 +16,28 @@ const Map = ({ formData }) => {
         scrolling='no'
         marginHeight='0'
         marginWidth='0'
-        src={`https://www.google.com/maps/embed/v1/place?q=${address},${city},${state}&key=AIzaSyBWpWG3Wo-8pVMPcYXQXC7Zg7G2jBqlhGw`}
+        src={`https://www.google.com/maps/embed/v1/place?q=${encodeURIComponent(
+          address
+        )},${encodeURIComponent(city)},${encodeURIComponent(
+          state
+        )}&key=YOUR_API_KEY_HERE`}
+        // Replace 'YOUR_API_KEY_HERE' with your actual Google Maps API key
       ></iframe>
     </div>
-  );
-};
+  )
+}
 
-const mapStateToProps = (state) => ({
-  // Map the necessary state to props
-  formData: state.formData, // Assuming formData is the reducer where the form data is stored
-});
+// PropTypes to validate the props structure
+Map.propTypes = {
+  formData: PropTypes.shape({
+    state: PropTypes.string.isRequired,
+    city: PropTypes.string.isRequired,
+    address: PropTypes.string.isRequired
+  }).isRequired
+}
 
-export default connect(mapStateToProps)(Map);
+const mapStateToProps = state => ({
+  formData: state.formData // Correct assumption about the structure of your Redux state
+})
+
+export default connect(mapStateToProps)(Map)
